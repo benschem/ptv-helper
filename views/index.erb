@@ -1,0 +1,92 @@
+<% require_relative "../lib/ptv/timetable" %>
+
+<h1>Get me to work on time</h1>
+<h2>Current Time</h2>
+<p id="currentTime">
+  <span class="time">
+    <%= Time.now.getlocal.strftime("%l:%M %p") %>
+  </span>
+</p>
+<% unless @error %>
+  <div class="runs">
+    <div class="flex justify-between">
+      <div>
+        <h3>Depart</h3>
+        <h4>Lansdowne Rd</h4>
+      </div>
+      <div>
+        <h3>Arrive</h3>
+        <h4>Chapel St</h4>
+      </div>
+    </div>
+    <%# @matched_trams.each do |matched_tram| %>
+      <%# departure = matched_tram[:departure] %>
+      <%# arrival = matched_tram[:arrival] %>
+      <%# tram_number = Timetable.new.get_route_number_for(departure[:route_id]) %>
+      <%# local_departure_time = Time.parse(departure[:scheduled_departure_utc]).getlocal %>
+      <%# local_arrival_time = Time.parse(arrival[:scheduled_departure_utc]).getlocal %>
+      <%# if departure[:direction_id] == 13  %>
+      <%# if local_departure_time > Time.now.getlocal %>
+<!--        <div class="matched-tram">
+          <div class="departure">
+            <div class="flex">
+              <p class="time-to-departure">in<br>
+                <span class="time"><%#= ((local_departure_time - Time.now) / 60.0).ceil %></span> mins
+              </p>
+              <p><%#= tram_number %></p>
+              <p class="departure-time"
+                data-departure-time="<%#= local_departure_time %>"
+                data-run-ref="<%#= departure[:run_ref] %>">
+                <span class="time">
+                  <%#= local_departure_time.strftime("%l:%M %p")  %>-->
+<!--                </span>
+              </p>
+            </div>
+          </div>
+          <div class="arrival">
+            <p class="arrival-time"
+              data-arrival-time="<%#= local_arrival_time %>"
+              data-run-ref="<%#= arrival[:run_ref] %>">
+              <span class="time">
+                <%#= local_arrival_time.strftime("%l:%M %p")  %>-->
+<!--              </span>
+            </p>
+            <!--<p class="time-to-arrival"><%##= ((local_arrival_time - Time.now) / 60.0).ceil %> mins</p>-->-->
+<!--          </div>
+        </div>
+      <%# end %>-->
+    <%# end %>
+    <% @tram_arrival_times.each do |tram| %>
+      <% if tram[:arrival_time] > Time.now.getlocal %>
+          <div class="matched-tram">
+            <div class="departure">
+              <div class="flex">
+                <p class="time-to-departure">in<br>
+                  <span class="time"><%= ((tram[:arrival_time] - Time.now) / 60.0).ceil %></span> mins
+                </p>
+                <p><%= tram[:route_number] %></p>
+                <p class="departure-time"
+                  data-departure-time="<%= tram[:arrival_time] %>"
+                  <span class="time">
+                    <%= tram[:arrival_time].strftime("%l:%M %p")  %>
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div class="arrival">
+              <p class="arrival-time"
+                data-arrival-time="<%= tram[:arrival_time] + 6*60 %>"
+                <span class="time">
+                  <%= (tram[:arrival_time] + 6*60).strftime("%l:%M %p")  %>
+                </span>
+              </p>
+              <!--<p class="time-to-arrival"><%#= (Time.now + (tram[:arrival_time] + 60*60)).ceil %> mins</p>-->-->
+            </div>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <p>Oops! Something went wrong. Error: <%= @error %></p>
+<% end %>
+<script type="text/javascript" src="javascript/updateTimes.js"></script>

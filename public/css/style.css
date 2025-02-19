@@ -1,0 +1,96 @@
+body {
+  font-family: system-ui, sans-serif;
+  font-weight: normal;
+}
+
+span.time {
+  font-family: "Nimbus Mono PS", "Courier New", monospace;
+  font-weight: normal;
+}
+
+.debug {
+  border: 1px solid red;
+
+  & * {
+    border: 1px solid red;
+  }
+}
+
+.container {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+
+  /* & > * {
+    flex-grow: 1;
+  } */
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+h1 {
+  margin: 1rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 0.75rem;
+}
+
+#currentTime {
+  font-size: larger;
+  padding: 1rem;
+  background-color: pink;
+  text-align: center;
+}
+
+.runs {
+  display: grid;
+  gap: 1rem;
+}
+
+.matched-tram {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .departure {
+} */
+
+.departure-time {
+  padding: 1rem;
+  background-color: lightgreen;
+  text-align: center;
+}
+
+.time-to-departure {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  font-size: smaller;
+  text-align: center;
+}
+
+/* .arrival {
+} */
+
+.arrival-time {
+  padding: 1rem;
+  background-color: darkgreen;
+  color: white;
+  text-align: center;
+}
+
+.time-to-arrival {
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  font-size: smaller;
+  text-align: center;
+}
