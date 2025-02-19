@@ -29,8 +29,8 @@ CACHE = Cache::InMemoryCache.new
 # Default is 100
 # CACHE.max_cache_size = 100
 
-# Set expiration time for cached_items.
-# Default is 3600 (1 hour)
+# Set expiration time in seconds for cached_items.
+# Default is 3600 seconds (1 hour)
 # CACHE.expiration_time = 3600
 
 ## TODO: Background job that clears expired cached resources
