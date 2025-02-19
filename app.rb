@@ -11,7 +11,13 @@ require_relative 'config/environment'
 get '/' do
   # Get future departures for the rest of the day for city bound trams from the Landsdowne Rd stop
   begin
-    @tram_arrival_times = Scraper.new(1107).fetch_next_tram_times
+    # tram = params[:tram]
+    # stop = params[:stop]
+    # tram_stop_id = Tram.find_stop(tram, stop)
+    tram_stop_id = 1107
+    @tram_arrival_times = TramStop.new(tram_stop_id).next_arrivals
+
+    # IDEA: USE API TO CALC AVG TIME BETWEEN STOPS
 
     # timetable = Timetable.new
     # lansdowne_rd = timetable.find_tram_stop(stop_number: 37, tram_number: 5)

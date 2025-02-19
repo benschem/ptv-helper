@@ -3,10 +3,10 @@
 require 'json'
 require 'openssl'
 require_relative '../spec_helper'
-require_relative '../../lib/ptv/api_client'
+require_relative '../../lib/ptv/api/timetable_api_client'
 
-RSpec.describe APIClient do
-  let(:client) { APIClient.new }
+RSpec.describe TimetableAPIClient do
+  let(:client) { TimetableAPIClient.new }
 
   describe '#request' do
     let(:url) { 'http://api.com/resource' }
